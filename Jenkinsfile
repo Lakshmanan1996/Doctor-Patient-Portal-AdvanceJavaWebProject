@@ -25,7 +25,7 @@ pipeline {
             agent { label 'workernode1' }
             steps {
                 checkout([$class: 'GitSCM',
-                    branches: [[name: 'master']],
+                    branches: [[name: 'main']],
                     userRemoteConfigs: [[url: "${GIT_REPO}"]]
                 ])
             }
