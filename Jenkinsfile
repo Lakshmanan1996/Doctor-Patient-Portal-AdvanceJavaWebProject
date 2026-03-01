@@ -48,6 +48,7 @@ pipeline {
 
             steps {
                 unstash 'source-code'
+                dir('Doctor-Patient-Portal'){
                 sh 'mvn clean install -DskipTests'
             }
         }
