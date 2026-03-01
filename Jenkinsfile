@@ -71,7 +71,7 @@ pipeline {
                           -Dsonar.projectKey=hms \
                           -Dsonar.projectName=hms \
                           -Dsonar.sources=Doctor-Patient-Portal/src \
-                          -Dsonar.java.binaries=target/classes
+                          -Dsonar.java.binaries=target/classes \
                         """
                     }
                 }
