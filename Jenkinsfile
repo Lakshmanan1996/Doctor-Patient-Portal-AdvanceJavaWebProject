@@ -57,7 +57,7 @@ pipeline {
 
         
 
-        /* ===================== SONARQUBE ===================== */
+         /* ===================== SONARQUBE ===================== */
         stage('SonarQube Analysis') {
             agent { label 'workernode2' }
             steps {
@@ -66,17 +66,13 @@ pipeline {
                 script {
                     def scannerHome = tool 'SonarQubeScanner'
                     withSonarQubeEnv('sonarqube') {
-                        sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                          -Dsonar.projectKey=hms \
-                          -Dsonar.projectName=hms \
-                          -Dsonar.sources=Doctor-Patient-Portal/src \
-                          -Dsonar.java.binaries=target/classes \
-                        """
+                        dir('Doctor-Patient-Portal') {
+                            sh 'mvn sonar:sonar'
+                            }
+                        }
                     }
                 }
             }
-        }
 
         /*===================== QUALITY GATE ===================== */
         
